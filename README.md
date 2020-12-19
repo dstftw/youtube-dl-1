@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.com/ytdl-org/youtube-dl.svg?branch=master)](https://travis-ci.com/ytdl-org/youtube-dl)
+[![Build Status](https://github.com/dstftw/youtube-dl-1/workflows/CI/badge.svg)](https://github.com/dstftw/youtube-dl-1/actions?query=workflow%3ACI)
+
 
 youtube-dl - download videos from youtube.com or other video platforms
 
