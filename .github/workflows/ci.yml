@@ -9,16 +9,16 @@ jobs:
       matrix:
         python-version: [2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, pypy-2.7, pypy-3.6, pypy-3.7]
         ytdl-test-set: [core, download]
-      steps:
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Run tests
-        continue-on-error: ${{ matrix.ytdl-test-set == 'download' }}
-        env:
-          YTDL_TEST_SET: ${{ matrix.ytdl-test-set }}
-        run: ./devscripts/run_tests.sh
+    steps:
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Run tests
+      continue-on-error: ${{ matrix.ytdl-test-set == 'download' }}
+      env:
+        YTDL_TEST_SET: ${{ matrix.ytdl-test-set }}
+      run: ./devscripts/run_tests.sh
   flake8:
     name: Linter
     runs-on: ubuntu-latest
