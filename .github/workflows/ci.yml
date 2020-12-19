@@ -11,14 +11,17 @@ jobs:
         # TODO: python 2.6
         python-version: [2.7, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, pypy-2.7, pypy-3.6, pypy-3.7]
         ytdl-test-set: [core, download]
+        run-tests-ext: sh
         include:
         # python 3.2 is only available on windows via setup-python
         - os: windows-latest
           python-version: 3.2
           ytdl-test-set: core
+          run-tests-ext: bat
         - os: windows-latest
           python-version: 3.2
           ytdl-test-set: download
+          run-tests-ext: bat
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -31,7 +34,7 @@ jobs:
       continue-on-error: ${{ matrix.ytdl-test-set == 'download' }}
       env:
         YTDL_TEST_SET: ${{ matrix.ytdl-test-set }}
-      run: ./devscripts/run_tests.sh
+      run: ./devscripts/run_tests.${{ matrix.run-tests-ext }}
   flake8:
     name: Linter
     runs-on: ubuntu-latest
