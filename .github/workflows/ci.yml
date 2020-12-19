@@ -16,6 +16,8 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install nose
+      run: pip install nose
     - name: Run tests
       continue-on-error: ${{ matrix.ytdl-test-set == 'download' }}
       env:
