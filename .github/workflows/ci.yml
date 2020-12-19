@@ -15,7 +15,10 @@ jobs:
         # python 3.2 is only available on windows via setup-python
         - os: windows-latest
           python-version: 3.2
-          ytdl-test-set: [core, download]
+          ytdl-test-set: core
+        - os: windows-latest
+          python-version: 3.2
+          ytdl-test-set: download
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
