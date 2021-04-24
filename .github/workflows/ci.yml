@@ -53,7 +53,7 @@ jobs:
         java -jar jython-installer.jar -s -d "$HOME/jython"
         echo "$HOME/jython/bin" >> $GITHUB_PATH
     - name: Install nose
-      run: pip install nose
+      run: pip -vvv install nose
     - name: Run tests
       continue-on-error: ${{ matrix.ytdl-test-set == 'download' || matrix.python-impl == 'jython' }}
       env:
